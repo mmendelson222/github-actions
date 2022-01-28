@@ -28,6 +28,8 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
+    - name: Show fake secret
+      run: echo "Hello  ${{ secrets.A_SECRET }}"
     - name: Invoke HelloWorld Lambda
       id: HelloWorld
       uses: gagoar/invoke-aws-lambda@master
