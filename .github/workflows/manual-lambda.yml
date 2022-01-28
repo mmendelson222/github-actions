@@ -31,7 +31,7 @@ jobs:
     - name: Show fake secret
       run: echo "Hello  ${{ secrets.A_SECRET }}"
     - name: Invoke HelloWorld Lambda
-      id: HelloWorld
+      id: hellolambda
       uses: gagoar/invoke-aws-lambda@master
       with:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -39,4 +39,4 @@ jobs:
         FunctionName: HelloWorld
         Payload: '{ "Info": "blah blah blah" }'
     - name: Store response payload to file
-      run: echo "here's the output:";  echo '${{ fromJSON(steps.foobar.outputs.response).Payload }}' 
+      run: echo "here's the output:";  echo '${{ fromJSON(steps.hellolambda.outputs.response).Payload }}' 
